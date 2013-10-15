@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/config">
+        <file>defaults.ini</file>
+        <file>zones.ini</file>
+    </qresource>
+</RCC>
