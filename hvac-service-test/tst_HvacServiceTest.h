@@ -136,6 +136,7 @@ private Q_SLOTS:
     }
 
 
+
 private:
 
     HvacZone *zone(QString name) {

@@ -5,14 +5,14 @@
 #include <QP888Device.h>
 #include <HvacZone.h>
 
-class PhidgetHvacDevicePrivate;
+class HSPhidgetDeviceManagerPrivate;
 
-class PhidgetHvacDevice : public QObject
+class HSPhidgetDeviceManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit PhidgetHvacDevice(QObject *parent = 0);
-    ~PhidgetHvacDevice();
+    explicit HSPhidgetDeviceManager(QObject *parent = 0);
+    ~HSPhidgetDeviceManager();
 
 signals:
 
@@ -25,7 +25,7 @@ public slots:
     void addZone(HvacZone *zone);
 
 private:
-    QScopedPointer<PhidgetHvacDevicePrivate> p;
+    QScopedPointer<HSPhidgetDeviceManagerPrivate> p;
 };
 
 #endif // PHIDGETHVACDEVICE_H

@@ -1,11 +1,12 @@
 #include "PhidgetHvacDevice.h"
 
-class PhidgetHvacDevicePrivate {
+class HSPhidgetDeviceManagerPrivate {
 public:
-    PhidgetHvacDevice *self;
+    HSPhidgetDeviceManager *self;
 
     QList<QP888Device *> mDevices;
-    qint16 mIoIndex;
+    qint16 mLastDeviceIndex;
+    qint16 mLastInputIndex;
 
     QList<HvacZone *> mZones;
 
@@ -14,12 +15,12 @@ public:
     }
 
     void connectToDevice(HvacZone *zone) {
-        qint16 index = mIoIndex + 1;
-        //QObject::connect(mDevices.at(index)->outputs())
+        qint16 index = mLastInputIndex + 1;
+        //QObject::connect(mDevices.at(index)->outputs().at(mLastInputIndex++), SIGNAL(stateChanged(bool))
     }
 
     void addZone(HvacZone *zone) {
-        if (mIoIndex > (mDevices.length() * 8) - 3) {
+        if (mLastInputIndex > (mDevices.length() * 8) - 3) {
             connectToDevice(zone);
         } else {
             exit(-1);
@@ -27,26 +28,27 @@ public:
     }
 };
 
-PhidgetHvacDevice::PhidgetHvacDevice(QObject *parent) :
+HSPhidgetDeviceManager::HSPhidgetDeviceManager(QObject *parent) :
     QObject(parent),
-    p(new PhidgetHvacDevicePrivate)
+    p(new HSPhidgetDeviceManagerPrivate)
 {
     p->self = this;
-    p->mIoIndex = 0;
+    p->mLastInputIndex = 0;
+    p->mLastDeviceIndex = 0;
 }
 
-PhidgetHvacDevice::~PhidgetHvacDevice()
+HSPhidgetDeviceManager::~HSPhidgetDeviceManager()
 {
 
 }
 
 
-void PhidgetHvacDevice::addDevice(QP888Device *device)
+void HSPhidgetDeviceManager::addDevice(QP888Device *device)
 {
     p->addDevice(device);
 }
 
-void PhidgetHvacDevice::addZone(HvacZone *zone)
+void HSPhidgetDeviceManager::addZone(HvacZone *zone)
 {
     p->addZone(zone);
 }
