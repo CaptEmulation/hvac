@@ -14,4 +14,4 @@ Building
 5. Now clone this repo: ```git clone git@github.com:CaptEmulation/hvac.git```
 6. Build in this order: qphidget-lib, QWebApp, hvac/hvac-service-lib
 
-This will get you the core library files.  See hvac/hvac-service-test for unit tests and some of the usages.  The various "mock" classes are built to work with qphidget-mock which is a replacement qphidget-lib which emulates an InterfaceKit888 phidget in software.  They are a whole different beast who's usage is left as an exercise to the reader.
+This will get you the core library files.  See hvac/hvac-service-test for unit tests and some of the usages.  The various "mock" classes are built to work with qphidget-mock which is a replacement qphidget-lib which emulates an InterfaceKit888 phidget in software.  They are a whole different beast whos usage is left as an exercise to the reader.
